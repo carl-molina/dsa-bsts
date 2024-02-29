@@ -5,6 +5,10 @@ import { BNodeNum } from "../common/bst";
  * Returns an array of visited nodes. */
 
 function bfs(node: BNodeNum | null): number[] {
+
+  // TODO: implement fn here
+
+
   return [42];
 }
 
