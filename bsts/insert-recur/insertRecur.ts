@@ -8,19 +8,16 @@ function insertRecur(bst: BSTNum, val: number): void {
 
   if (bst.root === null) {
     bst.root = newNode;
-    console.log('This is newNode which is now root:', bst.root);
     return;
   }
 
   if (val < bst.root.val) {
     insertRecur(new BSTNum(bst.root.left), val);
-    bst.root.left = newNode;
-    console.log('Original root after left:', bst.root);
+    if (bst.root.left === null) bst.root.left = newNode;
     return;
   } else if (val > bst.root.val) {
     insertRecur(new BSTNum(bst.root.right), val);
-    console.log('Original root after right:', bst.root);
-    bst.root.right = newNode;
+    if (bst.root.right === null) bst.root.right = newNode;
     return;
   }
 
