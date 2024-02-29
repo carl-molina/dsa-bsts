@@ -13,6 +13,16 @@ function findRecursively(node: BNodeNum | null, val: number): BNodeNum | null {
  * Returns the node, if found; else null. */
 
 function find(node: BNodeNum | null, val: number): BNodeNum | null {
+  
+  while (node !== null) {
+    if (val === node.val) return node;
+    else if (val > node.val) {
+      node = node.right
+    } else if (val < node.val) {
+      node = node.left
+    }
+  }
+
   return null;
 }
 
