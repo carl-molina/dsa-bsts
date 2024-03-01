@@ -7,15 +7,27 @@ import { Queue } from "../common/queue";
 
 function bfs(node: BNodeNum | null): number[] {
   const nums: number[] = [];
-  const toVisit = new Queue([node]);
+  const toVisit = [node];
+  console.log('toVisit.length', toVisit.length);
   if (!node) return [];
 
-  while (!toVisit.isEmpty()) {
-    let curr = toVisit.dequeue();
+  console.log('Before while loop');
+  while (toVisit.length !== 0) {
+    let curr = toVisit.shift();
+    console.log('This is curr:', curr);
+    debugger;
+
     if (curr) nums.push(curr.val);
+
+    console.log('This is nums after push:', nums);
+
+    if (curr!.left) {
+      toVisit.push(curr!.left);
+    }
+    if (curr!.right) {
+      toVisit.push(curr!.right);
+    }
   }
-  toVisit.enqueue(node.left);
-  toVisit.enqueue(node.right);
 
   return nums;
 }
